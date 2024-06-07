@@ -8,26 +8,24 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
+    final let highScoreString = "HighScore: "
     @IBOutlet weak var highScore: UILabel!
     var highScoreNum = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        
-        // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
         let storedHighscore = UserDefaults.standard.object(forKey: "highscore")
         if storedHighscore == nil {
-            highScore.text = "HighScore: \(highScoreNum)"
+            highScore.text = "\(highScoreString) \(highScoreNum)"
         }
         
         if let newScore = storedHighscore as? Int {
             highScoreNum = newScore
-            highScore.text = "HighScore: \(highScoreNum)"
+            highScore.text = "\(highScoreString) \(highScoreNum)"
         }
     }
 

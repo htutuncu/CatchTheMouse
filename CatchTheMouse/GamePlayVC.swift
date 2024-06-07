@@ -8,6 +8,10 @@
 import UIKit
 
 class GamePlayVC: UIViewController {
+    
+    final let highScoreString = "HighScore: "
+    final let scoreString = "Score: "
+    final let timeString = "Time: "
 
     @IBOutlet weak var score: UILabel!
     @IBOutlet weak var img1: UIImageView!
@@ -45,7 +49,7 @@ class GamePlayVC: UIViewController {
         imgList.append(img8)
         imgList.append(img9)
         
-        score.text = "Score \(scoreNum)"
+        setScoreLabel()
         
         img1.isUserInteractionEnabled = true
         img2.isUserInteractionEnabled = true
@@ -84,22 +88,18 @@ class GamePlayVC: UIViewController {
         }
         
         
-        timeLabel.text = "Time: \(counter)"
-        score.text = "Score: \(scoreNum)"
+        setTimeLabel()
+        setScoreLabel()
         
         let storedHighscore = UserDefaults.standard.object(forKey: "highscore")
         if storedHighscore == nil {
-            highScore.text = "HighScore: \(highScoreNum)"
+            setHighScoreLabel()
         }
         
         if let newScore = storedHighscore as? Int {
             highScoreNum = newScore
-            highScore.text = "HighScore: \(highScoreNum)"
+            setHighScoreLabel()
         }
-        
-        
-        
-        
         
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(timerFunction), userInfo: nil, repeats: true)
         hideTimer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(hideMouse), userInfo: nil, repeats: true)
@@ -108,7 +108,7 @@ class GamePlayVC: UIViewController {
     
     @objc func increaseScore() {
         scoreNum += 1
-        score.text = "Score: \(scoreNum)"
+        setScoreLabel()
     }
     
     @objc func hideMouse() {
@@ -122,7 +122,7 @@ class GamePlayVC: UIViewController {
     @objc func timerFunction() {
         
         counter -= 1
-        timeLabel.text = "Time: \(counter)"
+        setTimeLabel()
         
         if counter == 0 {
             timer.invalidate()
@@ -130,7 +130,7 @@ class GamePlayVC: UIViewController {
             
             if self.scoreNum > self.highScoreNum {
                 self.highScoreNum = self.scoreNum
-                highScore.text = "Highscore: \(self.highScoreNum)"
+                setHighScoreLabel()
                 UserDefaults.standard.set(self.highScoreNum, forKey: "highscore")
             }
             
@@ -141,9 +141,9 @@ class GamePlayVC: UIViewController {
                 (UIAlertAction) in
                 
                 self.scoreNum = 0
-                self.score.text = "Score: \(self.scoreNum)"
+                self.setScoreLabel()
                 self.counter = 10
-                self.timeLabel.text = "Time: \(self.counter)"
+                self.setTimeLabel()
                 
                 self.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.timerFunction), userInfo: nil, repeats: true)
                 self.hideTimer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(self.hideMouse), userInfo: nil, repeats: true)
@@ -155,6 +155,18 @@ class GamePlayVC: UIViewController {
                 img.isHidden = true
             }
         }
+    }
+    
+    private func setHighScoreLabel() {
+        highScore.text = "\(highScoreString) \(highScoreNum)"
+    }
+    
+    private func setScoreLabel() {
+        score.text = "\(scoreString) \(scoreNum)"
+    }
+    
+    private func setTimeLabel() {
+        timeLabel.text = "\(timeString) \(counter)"
     }
  
 
