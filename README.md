@@ -8,8 +8,7 @@
 
 | Home Screen | Game Screen | Time is Over |
 |----------|----------|----------|
-| <img src="./Screenshots/HomeScreen.png" alt="Home Screen" width="300"> | <img src="./Screenshots/GamePlayScreen.png" alt="Game Play Screen" width="300"> | <img src="./Screenshots/TimeIsOver.png" alt="Time is Over" width="300">
- |
+| <img src="./Screenshots/HomeScreen.png" alt="Home Screen" width="300"> | <img src="./Screenshots/GamePlayScreen.png" alt="Game Play Screen" width="300"> | <img src="./Screenshots/TimeIsOver.png" alt="Time is Over" width="300">|
 
 
  
