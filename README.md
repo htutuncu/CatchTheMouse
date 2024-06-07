@@ -1,10 +1,20 @@
 # CatchTheMouse
- The iOS application that user can play a simple game.
+ The iOS application that user can play a simple game. 
+ 
+ If the user can tap the mouse over the screen, score increases. Automatically saves the highscore and store in UserDefaults.
 
 # App Screenshots
 
 ## Home Screen
 
-![Proje Logosu](./Screenshots/HomeScreen.png)
+<img src="./Screenshots/HomeScreen.png" alt="Home Screen" width="300">
+
+## Game Screen
+
+<img src="./Screenshots/GamePlayScreen.png" alt="Game Play Screen" width="300">
+
+## Time is Over
+
+<img src="./Screenshots/TimeIsOver.png" alt="Time is Over" width="300">
 
  
